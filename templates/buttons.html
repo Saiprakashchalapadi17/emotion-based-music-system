@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Music Recommendation System</title>
+    <link rel="stylesheet" href="/static/button_style.css">
+</head>
+<body>
+    <div class="header">
+        <nav>
+            <div class="logo">
+                <img src="./static/logoof.jpg" alt="">
+                <span>Music Recommendation Based On Facial Expression</span>
+            </div>
+            <ul>
+                <li><a href="http://localhost:5000/">HOME</a></li>
+            </ul>
+        </nav>
+
+        <div class="content">
+            <!-- <h1 class="slide-left">Our <br> Website</h1>
+            <p class="slide-left">Lorem ipsum, dolor sit amet consectetur adipisicing elit.</p>
+            <div class="links slide-left"> -->
+                <div class="output" >
+                    {% if final_output %}
+                    <h2 style="font-family:Bio-Rhyme; color: bisque;margin:40px;font:40px">You look {{final_output}}</h2>
+                    <h1 style="font-family:Bio-Rhyme; color: bisque;margin:40px;font:40px; font-size:70px">Let's cheer you up...!</h1>
+                    <h2 style="font-family:Bio-Rhyme; color: bisque;margin:40px;font:40px">What would you prefer</h2>
+                    {% endif %}
+                </div>
+                <a href="http://localhost:5000/movies/{{final_output}}" class="btn">MOVIES</a>
+                <a href="http://localhost:5000/songs/{{final_output}}" class="btn">SONGS</a>
+            </div>
+            <div class="content">
+                {% if final_output == "sad" %}
+                    <audio controls autoplay>
+                        <source src="{{ url_for('static', filename='sadsong.mp3') }}" type="audio/mpeg">
+                        Your browser does not support the audio element.
+                    </audio>
+                {% endif %}
+                {% if final_output == "angry" %}
+                    <audio controls autoplay>
+                        <source src="{{ url_for('static', filename='angrysong.mp3') }}" type="audio/mpeg">
+                        Your browser does not support the audio element.
+                    </audio>
+                {% endif %}
+                {% if final_output == "fear" %}
+                    <audio controls autoplay>
+                        <source src="{{ url_for('static', filename='sample.mp3') }}" type="audio/mpeg">
+                        Your browser does not support the audio element.
+                    </audio>
+                {% endif %}
+                {% if final_output == "happy" %}
+                    <audio controls autoplay>
+                        <source src="{{ url_for('static', filename='happysong.mp3') }}" type="audio/mpeg">
+                        Your browser does not support the audio element.
+                    </audio>
+                {% endif %}
+                {% if final_output == "neutral" %}
+                    <audio controls autoplay>
+                        <source src="{{ url_for('static', filename='neutralsong.mp3') }}" type="audio/mpeg">
+                        Your browser does not support the audio element.
+                    </audio>
+                {% endif %}
+                {% if final_output == "surprise" %}
+                    <audio controls autoplay>
+                        <source src="{{ url_for('static', filename='surprisesong.mp3') }}" type="audio/mpeg">
+                        Your browser does not support the audio element.
+                    </audio>
+                {% endif %}
+            </div>
+            
+        </div>
+    </div>
+</body>
+</html>
